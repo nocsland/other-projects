@@ -1,1 +1,0 @@
-[{"md5": "e90efcb83d69faf99fcab8b0255024de", "relpath": "dataset/creditcard.csv"}, {"md5": "ab5174c621962b108581e445f8339975", "relpath": "dataset/resampled_data.csv"}, {"md5": "e90efcb83d69faf99fcab8b0255024de", "relpath": "dataset/source_creditcard.csv"}, {"md5": "b633dd57d49fe069822f53fa301e9007", "relpath": "model/trained_model.pkl"}]
