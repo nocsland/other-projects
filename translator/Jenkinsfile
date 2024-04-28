@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        VENV_PATH = '/root/translator/venv/bin'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -19,7 +23,7 @@ pipeline {
                 script {
                     dir('/root/translator/') {
                         sh 'python3 -m venv venv'
-                        sh 'source venv/bin/activate'
+                        sh "export PATH=${VENV_PATH}:${env.PATH}"
                         sh 'pip install --no-cache-dir -r translator/requirements.txt'
                     }
                 }
