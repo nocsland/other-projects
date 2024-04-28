@@ -1,3 +1,4 @@
+// пайплайн без тестов
 pipeline {
     agent any
 
