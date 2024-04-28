@@ -1,4 +1,3 @@
-// пайплайн без тестов
 pipeline {
     agent any
 
@@ -26,9 +25,12 @@ pipeline {
         }
 
         stage('Build Docker image') {
-        script {
-            dir('/root/translator/') {
-                sh 'docker build -t translator-container .'
+            steps {
+                script {
+                    dir('/root/translator/') {
+                        sh 'docker build -t translator-container .'
+                    }
+                }
             }
         }
     }
