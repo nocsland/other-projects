@@ -36,14 +36,14 @@ def translate_en_to_ru(text, max_length=100):
     return translated_text
 
 
-# Маршрут для перевода с русского на английский
+# Эндпоинт для перевода с русского на английский
 @app.post("/translate/ru-to-en/")
 async def translate_ru_to_en_api(request: TranslationRequest):
     translated_text = translate_ru_to_en(request.text)
     return {"translated_text": translated_text}
 
 
-# Маршрут для перевода с английского на русский
+# Эндпоинт для перевода с английского на русский
 @app.post("/translate/en-to-ru/")
 async def translate_en_to_ru_api(request: TranslationRequest):
     translated_text = translate_en_to_ru(request.text)
