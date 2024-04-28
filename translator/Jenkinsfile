@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install pip') {
             steps {
-                sh 'sudo apt update && sudo apt install -y python3-pip'
+                sh 'apt update && apt install -y python3-pip'
             }
         }
 
