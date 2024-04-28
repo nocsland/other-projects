@@ -25,7 +25,8 @@ pipeline {
                         sh 'python3 -m venv venv'
                         sh 'chmod +x venv/bin/activate'
                         sh './venv/bin/activate'
-                        sh 'pip3 install --no-cache-dir -r translator/requirements.txt'
+                        sh 'echo $pwd'
+                        sh 'venv/bin/pip3 install -r root/translator/requirements.txt'
                     }
                 }
             }
