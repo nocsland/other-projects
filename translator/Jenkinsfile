@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         VENV_PATH = '/root/translator/venv/bin'
+        DEPS_PATH = '/root/translator/deps'
     }
 
     stages {
@@ -21,10 +22,10 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 script {
-                    dir('/root/translator/') {
+                    dir(DEPS_PATH) {
                         sh 'python3 -m venv venv'
                         sh "export PATH=${VENV_PATH}:${env.PATH}"
-                        sh 'pip install --no-cache-dir -r translator/requirements.txt'
+                        sh 'pip install --no-cache-dir -r /root/translator/requirements.txt'
                     }
                 }
             }
