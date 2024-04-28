@@ -23,7 +23,7 @@ pipeline {
                 script {
                     dir('/root/translator/') {
                         sh 'python3 -m venv venv'
-                        sh './venv/bin/activate && pip install --no-cache-dir -r requirements.txt'
+                        sh 'chmod +x ./venv/bin/activate && pip install --no-cache-dir -r requirements.txt'
                     }
                 }
             }
