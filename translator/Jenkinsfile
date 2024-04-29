@@ -25,9 +25,13 @@ pipeline {
             }
         }
 
+        stage('Remove old Docker'){
+            steps{
+                sh 'for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do apt-get remove $pkg; done'
+            }
+        }
         stage('Install Docker') {
             steps {
-                sh 'rm /usr/share/keyrings/docker-archive-keyring.gpg'
                 sh 'apt-get update && apt-get install -y --no-install-recommends \
                     apt-transport-https \
                     ca-certificates \
