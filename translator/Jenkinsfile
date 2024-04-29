@@ -24,7 +24,7 @@ pipeline {
                 sh 'ls -al "$BUILD/translator"'
             }
         }
-
+/*
         stage('Remove old Docker') {
             steps {
                 sh 'for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do apt-get remove $pkg || true; done'
@@ -49,6 +49,7 @@ pipeline {
                 '''
             }
         }
+*/
 
         stage('Build Docker image') {
             steps {
