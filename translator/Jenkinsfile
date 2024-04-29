@@ -2,21 +2,23 @@ pipeline {
     agent any
 
     environment {
-        VENV_PATH = '/root/translator/venv'
+        JENKINS_HOME="$JENKINS_HOME"
+        BUILD_DIR="/build
     }
 
     stages {
         stage('Cleanup') {
             steps {
-                  sh 'ls -al /'
-//                sh 'rm -rf /' // Удаление всех предыдущих файлов
+                  sh 'mkdir -p "$BUILD_DIR"'
+                  sh 'ls -al "$JENKINS_HOME"'
+
             }
         }
 
         stage('Checkout') {
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
-                sh 'ls -al /'
+                sh 'ls -al /var/jenkins_home/'
             }
         }
 
