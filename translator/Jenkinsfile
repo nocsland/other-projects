@@ -6,6 +6,12 @@ pipeline {
     }
 
     stages {
+        stage('Cleanup') {
+            steps {
+                sh 'rm -rf /root/*' // Удаление всех предыдущих файлов
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
