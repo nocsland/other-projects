@@ -16,7 +16,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Установка зависимостей Python
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Копирование исходного кода приложения в контейнер
 COPY . .
