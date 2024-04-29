@@ -37,7 +37,7 @@ pipeline {
         stage('Run Docker container') {
             steps {
                 script {
-                    sh 'docker run -d -p 8000:8000 translator-app translator-img'
+                    sh 'docker run -d -p 8000:8000 translator-img translator-app'
                 }
             }
         }
