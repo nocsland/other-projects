@@ -6,3 +6,4 @@ transformers
 sacremoses
 dvc
 dvc-gdrive
+sentencepiece
