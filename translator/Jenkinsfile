@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                sh 'chown -R jenkins:jenkins "$BUILD"'
-                deleteDir()
+                cleanWs()
             }
         }
 
@@ -18,12 +17,6 @@ pipeline {
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
                 sh 'ls -al "$BUILD/translator"'
-            }
-        }
-
-        stage('Docker clean'){
-            steps {
-                sh 'for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do apt-get remove $pkg; done'
             }
         }
 
