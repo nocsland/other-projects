@@ -16,7 +16,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
-                sh 'ls -al "$JENKINS_HOME"'
+                sh 'ls -al "$JENKINS_HOME/workspace/"'
             }
         }
 /*
