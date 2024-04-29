@@ -1,6 +1,9 @@
 # Установка базового образа с Python
 FROM python:3.9-slim
 
+# включаем root пользователя
+user root
+
 # Установка системных зависимостей
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \

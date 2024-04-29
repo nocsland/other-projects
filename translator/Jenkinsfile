@@ -14,7 +14,7 @@ pipeline {
                 sh 'ls -al "$BUILD/translator"'
             }
         }
-
+/*
         stage('Install pip') {
             steps {
                 sh 'apt update && apt install -y python3-pip python3-venv'
@@ -33,16 +33,16 @@ pipeline {
                 }
             }
         }
-/*
+*/
+
         stage('Build Docker image') {
             steps {
                 script {
-                    dir('/root/translator/') {
+                    dir('"$BUILD"/translator/') {
                         sh 'docker build -t translator-container .'
                     }
                 }
             }
         }
-*/
     }
 }
