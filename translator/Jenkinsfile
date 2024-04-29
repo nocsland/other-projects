@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage('Cleanup') {
+        stage('info') {
             steps {
                   sh 'ls -al "$JENKINS_HOME"'
 
