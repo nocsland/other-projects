@@ -30,31 +30,27 @@ pipeline {
                 sh 'for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do apt-get remove $pkg||true; done'
             }
         }
-        stage('Add Docker official GPG key') {
+
+        stage('Install Docker') {
                 steps {
                     sh 'rm /usr/share/keyrings/docker-archive-keyring.gpg'
                     sh '''
-                       # Add Docker official GPG key:
-                        apt-get update
-                        apt-get install ca-certificates curl
-                        install -m 0755 -d /etc/apt/keyrings
-                        curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-                        chmod a+r /etc/apt/keyrings/docker.asc
-
-                        # Add the repository to Apt sources:
-                        echo \
-                          "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-                          $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-                          tee /etc/apt/sources.list.d/docker.list > /dev/null
-                        apt-get update
+                       apt update && apt install -y --no-install-recommends \
+                        apt-transport-https \
+                        ca-certificates \
+                        curl \
+                        gnupg \
+                        lsb-release
+                        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --batch --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+                        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+                        apt update && apt install -y --no-install-recommends docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+                        rm -rf /var/lib/apt/lists/*
+                        usermod -aG docker jenkins
+                        chmod +x /var/run/docker.sock
                     '''
-    }
-}
-        stage('Install Docker'){
-                steps {
-                        sh 'apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin'
                 }
         }
+    }
 
 
 
