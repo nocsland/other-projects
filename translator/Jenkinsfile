@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Install Docker') {
                 steps {
-                    sh 'sudo rm /usr/share/keyrings/docker-archive-keyring.gpg'
+                    sh 'rm /usr/share/keyrings/docker-archive-keyring.gpg'
                     sh '''
                         apt update && apt install -y --no-install-recommends \
                         apt-transport-https \
