@@ -45,6 +45,7 @@ pipeline {
                         apt update && apt install -y --no-install-recommends docker-ce docker-ce-cli containerd.io
                         rm -rf /var/lib/apt/lists/*
                         usermod -aG docker jenkins
+                        chmod +x /var/run/docker.sock
                     '''
     }
 }
