@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         JENKINS_HOME = "$JENKINS_HOME"
-        BUILD = "/var/jenkins_home/workspace/mlops"
+        BUILD = "${JENKINS_HOME}/workspace/mlops"
     }
 
     stages {
