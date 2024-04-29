@@ -7,9 +7,9 @@ pipeline {
     }
 
     environment {
+        // Environment variables for the pipeline
         JENKINS_HOME = "$JENKINS_HOME"
         BUILD = "${JENKINS_HOME}/workspace/mlops"
-        description('Environment variables for the pipeline')
     }
 
     stages {
