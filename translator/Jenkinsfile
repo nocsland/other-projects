@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                cleanWs()
+            deleteDirectories()
+            cleanupParameter('CLEANUP')
             }
         }
 
