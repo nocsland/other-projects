@@ -7,24 +7,11 @@ pipeline {
     }
 
     stages {
-        stage('Cleanup') {
-            steps {
-                  sh 'rm -rf "$BUILD/*"'
-
-            }
-        }
-
-        stage('Info') {
-            steps {
-                  sh 'ls -la "$BUILD"'
-
-            }
-        }
 
         stage('Checkout') {
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
-                sh 'ls -al "$JENKINS_HOME/workspace/"'
+                sh 'ls -al "$BUILD/translator"'
             }
         }
 /*
