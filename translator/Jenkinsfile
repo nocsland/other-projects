@@ -3,12 +3,13 @@ pipeline {
 
     environment {
         JENKINS_HOME="$JENKINS_HOME"
+        BUILD="/var/jenkins_home/workspace/mlops"
     }
 
     stages {
         stage('info') {
             steps {
-                  sh 'ls -al "$JENKINS_HOME"'
+                  sh 'ls -al "$BUILD"'
 
             }
         }
