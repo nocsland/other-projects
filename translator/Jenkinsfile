@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                sh 'sudo chown -R jenkins:jenkins "$BUILD"'
+                sh 'chown -R jenkins:jenkins "$BUILD"'
                 deleteDir()
             }
         }
