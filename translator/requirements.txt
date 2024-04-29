@@ -7,3 +7,4 @@ sacremoses
 dvc
 dvc-gdrive
 sentencepiece
+transformers[torch]
