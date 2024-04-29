@@ -3,15 +3,18 @@ pipeline {
     options {
         // This is required if you want to clean before build
         skipDefaultCheckout(true)
+        description('Global options for the pipeline')
     }
 
     environment {
         JENKINS_HOME = "$JENKINS_HOME"
         BUILD = "${JENKINS_HOME}/workspace/mlops"
+        description('Environment variables for the pipeline')
     }
 
     stages {
         stage('Preparation') {
+            description('Preparing for the build')
             steps {
                 cleanWs()
                 checkout scm
@@ -19,13 +22,14 @@ pipeline {
         }
 
         stage('Checkout') {
+            description('Checking out the repository')
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
-                sh 'ls -al "$BUILD/translator"'
             }
         }
 
-        stage('Build Docker image') {
+        stage('Build image') {
+            description('Building the Docker image')
             steps {
                 script {
                     dir('translator/') {
@@ -34,7 +38,9 @@ pipeline {
                 }
             }
         }
-        stage('Run Docker container') {
+
+        stage('Run container') {
+            description('Running the Docker container')
             steps {
                 script {
                     sh 'docker run -d -p 8000:8000 --name translator-app translator-img'
