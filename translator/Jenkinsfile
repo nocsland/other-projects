@@ -7,9 +7,9 @@ pipeline {
     }
 
     stages {
-        stage('info') {
+        stage('Cleanup') {
             steps {
-                  sh 'ls -al "$BUILD"'
+                  sh 'rm -rf "$BUILD/*"'
 
             }
         }
