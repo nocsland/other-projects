@@ -5,4 +5,4 @@ requests
 transformers
 sacremoses
 dvc
-dvc[gdrive]
+dvc-gdrive
