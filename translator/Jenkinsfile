@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Cleanup') {
+            steps {
+                sh "rm -rf $BUILD/*"
+            }
+        }
 
         stage('Checkout') {
             steps {
