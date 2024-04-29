@@ -1,34 +1,35 @@
 pipeline {
     agent any
     options {
-        // This is required if you want to clean before build
+    // 'Preparing for the build'
+    // This is required if you want to clean before build
         skipDefaultCheckout(true)
-        description('Global options for the pipeline')
     }
 
     environment {
-        // Environment variables for the pipeline
+     // Environment variables for the pipeline
         JENKINS_HOME = "$JENKINS_HOME"
         BUILD = "${JENKINS_HOME}/workspace/mlops"
     }
 
     stages {
         stage('Preparation') {
+        // 'Preparing for the build'
             steps {
                 cleanWs()
                 checkout scm
             }
-            description('Preparing for the build')
         }
 
         stage('Checkout') {
+        // 'Checking out the repository'
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
             }
-            description('Checking out the repository')
         }
 
         stage('Build image') {
+        // 'Building the Docker image'
             steps {
                 script {
                     dir('translator/') {
@@ -36,16 +37,15 @@ pipeline {
                     }
                 }
             }
-            description('Building the Docker image')
         }
 
         stage('Run container') {
+        // 'Running the Docker container'
             steps {
                 script {
                     sh 'docker run -d -p 8000:8000 --name translator-app translator-img'
                 }
             }
-            description('Running the Docker container')
         }
     }
 }
