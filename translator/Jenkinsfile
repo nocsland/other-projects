@@ -8,14 +8,15 @@ pipeline {
     stages {
         stage('Cleanup') {
             steps {
-                sh 'rm -rf /root/*' // Удаление всех предыдущих файлов
+                  sh 'ls -al'
+//                sh 'rm -rf /' // Удаление всех предыдущих файлов
             }
         }
 
         stage('Checkout') {
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
-                sh 'ls -al /root/translator/'
+                sh 'ls -al /'
             }
         }
 
