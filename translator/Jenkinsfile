@@ -15,6 +15,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git 'https://github.com/nocsland/other-projects.git'
+                sh 'ls -al /root/translator/'
             }
         }
 
