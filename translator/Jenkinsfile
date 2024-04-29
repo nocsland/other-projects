@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     dir('translator/') {
-                        sh 'docker build -t translator-image .'
+                        sh 'docker build -t translator-img .'
                     }
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
         stage('Run Docker container') {
             steps {
                 script {
-                    sh 'docker run -d -p 8000:8000 translator-image'
+                    sh 'docker run -d -p 8000:8000 translator-app translator-img'
                 }
             }
         }
