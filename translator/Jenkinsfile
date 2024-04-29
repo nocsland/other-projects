@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    options {
+        // This is required if you want to clean before build
+        skipDefaultCheckout(true)
+    }
 
     environment {
         JENKINS_HOME="$JENKINS_HOME"
@@ -10,8 +14,7 @@ pipeline {
         stage('Preparation') {
             steps {
             cleanWs()
-            deleteDirectories()
-            cleanupParameter()
+            checkout scm
             }
         }
 
