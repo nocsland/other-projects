@@ -28,7 +28,6 @@ pipeline {
                         sh 'python3 -m venv venv'
                         sh 'chmod +x venv/bin/activate'
                         sh './venv/bin/activate'
-                        sh 'ls /root/translator/'
                         sh 'venv/bin/pip3 install -r "$BUILD"/translator/requirements.txt'
                     }
                 }
