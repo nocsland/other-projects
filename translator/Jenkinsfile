@@ -46,7 +46,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    dir('$BUILD/translator/') {
+                    dir('"$BUILD"/translator/') {
                         sh 'docker build -t translator-container .'
                     }
                 }
