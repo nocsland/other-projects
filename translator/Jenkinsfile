@@ -14,7 +14,7 @@ pipeline {
                 sh 'ls -al "$BUILD/translator"'
             }
         }
-/*
+
         stage('Install pip') {
             steps {
                 sh 'apt update && apt install -y python3-pip python3-venv'
@@ -24,17 +24,17 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 script {
-                    dir('/root/translator/') {
+                    dir('"$BUILD"/translator/') {
                         sh 'python3 -m venv venv'
                         sh 'chmod +x venv/bin/activate'
                         sh './venv/bin/activate'
                         sh 'ls /root/translator/'
-                        sh 'venv/bin/pip3 install -r /root/translator/requirements.txt'
+                        sh 'venv/bin/pip3 install -r "$BUILD"/translator/requirements.txt'
                     }
                 }
             }
         }
-
+/*
         stage('Build Docker image') {
             steps {
                 script {
