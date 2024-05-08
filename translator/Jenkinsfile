@@ -16,11 +16,24 @@ pipeline {
         stage('Preparation') {
         // 'Preparing for the build'
             steps {
-                cleanWs()
                 checkout scm
+                cleanWs()
             }
         }
-
+        stage('Stop and remove container') {
+            steps {
+                script {
+                    sh 'docker stop translator-app && docker rm translator-app || true'
+                }
+            }
+        }
+        stage('Remove image') {
+            steps {
+                script {
+                    sh 'docker rmi translator-img || true'
+                }
+            }
+        }
         stage('Checkout') {
         // 'Checking out the repository'
             steps {
